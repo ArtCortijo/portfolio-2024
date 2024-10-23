@@ -1,7 +1,32 @@
 import Image from 'next/image';
+import { client } from './lib/sanity';
+import { simpleHome } from './lib/interface';
 // import styles from '../app/page.module.scss';
 
-export default function Home() {
+// Get data from Sanity
+async function getData() {
+	const query = `*[_type == 'blog'] {
+		title,
+			"currentSlug": slug.current,
+		smallDescription,
+		titleImage,
+	}`;
+	// const query = `*[_type == 'homepage'] {
+	// 	title,
+	// 		"currentSlug": slug.current,
+	// 	smallDescription,
+	// 	titleImage,
+	// }`;
+
+	const data = await client.fetch(query);
+
+	return data;
+}
+
+export default async function Home() {
+	const data: simpleHome[] = await getData();
+	console.log(data);
+
 	return (
 		<div className='grid items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]'>
 			<main>
