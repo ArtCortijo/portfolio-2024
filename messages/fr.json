@@ -1,0 +1,10 @@
+{
+	"Homepage": {
+		"title": "Bonjour tout le monde!",
+		"about": "Accéder à la page à propos"
+	},
+	"LocaleSwitcher": {
+		"label": "Changer de langue",
+		"locale": "{locale, select, fr {Français} en {English} other {Inconnu}}"
+	}
+}

@@ -1,6 +1,9 @@
 import Image from 'next/image';
-import { client } from './lib/sanity';
-import { simpleHome } from './lib/interface';
+import { getTranslations } from 'next-intl/server';
+import { client } from '../lib/sanity';
+import { simpleHome } from '../lib/interface';
+import Header from '@/components/Header';
+
 // import styles from '../app/page.module.scss';
 
 // Get data from Sanity
@@ -24,13 +27,17 @@ async function getData() {
 }
 
 export default async function Home() {
+	const t = await getTranslations('Homepage');
 	const data: simpleHome[] = await getData();
 	console.log(data);
 
 	return (
 		<div className='grid items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]'>
+			<Header />
 			<main>
 				<section className='h-screen flex flex-col justify-center'>
+					<h1>{t('title')}</h1>
+					<h2>{t('about')}</h2>
 					Section Head
 				</section>
 				<section className='h-screen flex flex-col justify-center'>

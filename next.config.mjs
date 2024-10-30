@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
+import createNextIntlPlugin from 'next-intl/plugin';
 import withPlaiceholder from '@plaiceholder/next';
+
+const withNextIntl = createNextIntlPlugin();
 
 const nextConfig = {
 	images: {
@@ -13,8 +16,4 @@ const nextConfig = {
 	},
 };
 
-export default withPlaiceholder(nextConfig);
-
-// const nextConfig = {};
-
-// export default nextConfig;
+export default withNextIntl(withPlaiceholder(nextConfig));
