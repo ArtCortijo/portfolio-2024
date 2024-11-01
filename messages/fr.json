@@ -1,4 +1,8 @@
 {
+	"Navigation": {
+		"home": "Accueil",
+		"about": "À propos"
+	},
 	"Homepage": {
 		"title": "Bonjour tout le monde!",
 		"about": "Accéder à la page à propos"

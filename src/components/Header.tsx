@@ -1,9 +1,9 @@
-import LocaleSwitcher from './LocaleSwitcher';
+import Navigation from './Navigation';
 
 function Header() {
 	return (
 		<div className='header'>
-			<LocaleSwitcher />
+			<Navigation />
 		</div>
 	);
 }

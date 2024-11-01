@@ -1,4 +1,8 @@
 {
+	"Navigation": {
+		"home": "Home",
+		"about": "About"
+	},
 	"Homepage": {
 		"title": "Hello world!",
 		"about": "Go to the about page"
