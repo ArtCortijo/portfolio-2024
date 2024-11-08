@@ -47,7 +47,6 @@ export default function LocaleSwitcherButton({
 			)}
 			aria-label={label}
 		>
-			{/* Optional: Add language icons */}
 			{currentLocale === 'en' ? '🇫🇷' : '🇬🇧'}
 			<span className='ml-2'>{localeLabel}</span>
 		</button>

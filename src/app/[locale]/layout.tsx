@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
+// import { Lexend } from 'next/font/google';
 import localFont from 'next/font/local';
 import '../globals.css';
+import '../../styles/index.scss';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 import { routing } from '@/i18n/routing';
@@ -8,16 +10,25 @@ import { notFound } from 'next/navigation';
 import SmoothScrolling from '@/components/SmoothScrolling';
 import Header from '@/components/Header';
 import Image from 'next/image';
+import TitleReveal from '@/components/TitleReveal';
 
-const geistSans = localFont({
-	src: '../fonts/GeistVF.woff',
-	variable: '--font-geist-sans',
-	weight: '100 900',
+// const lexend = Lexend({
+// 	subsets: ['latin'],
+// 	variable: '--font-lexend',
+// 	display: 'swap',
+// });
+
+const lexend = localFont({
+	src: '../fonts/Lexend-VariableFont_wght.ttf',
+	// src: '../fonts/Lexend-Regular.woff2',
+	variable: '--font-lexend',
+	display: 'block',
 });
-const geistMono = localFont({
-	src: '../fonts/GeistMonoVF.woff',
-	variable: '--font-geist-mono',
-	weight: '100 900',
+
+const openSans = localFont({
+	src: '../fonts/OpenSans-Regular.woff',
+	variable: '--font-open-sans',
+	display: 'block',
 });
 
 export const metadata: Metadata = {
@@ -37,18 +48,15 @@ export default async function LocaleLayout({
 		notFound();
 	}
 
-	// Providing all messages to the client
-	// side is the easiest way to get started
 	const messages = await getMessages();
 
 	return (
-		<html lang={locale}>
-			<body
-				className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-			>
+		<html lang={locale} className='dark'>
+			<body className={`${lexend.variable} ${openSans.variable} bg-[#161618]`}>
 				<NextIntlClientProvider messages={messages}>
 					<Header />
 					<SmoothScrolling>
+						<TitleReveal as='h1'>Hello World!</TitleReveal>
 						<main>{children}</main>
 					</SmoothScrolling>
 					<footer className='row-start-3 flex gap-6 flex-wrap items-center justify-center'>

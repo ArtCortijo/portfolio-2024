@@ -4,7 +4,7 @@ async function About() {
 	const t = await getTranslations('Homepage');
 
 	return (
-		<div className='grid items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]'>
+		<div className='grid items-center justify-items-center min-h-screen font-[family-name:var(--font-lexend)]'>
 			<section className='h-screen flex flex-col justify-center'>
 				About Page
 				<h1>{t('title')}</h1>

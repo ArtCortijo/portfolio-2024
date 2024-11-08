@@ -1,11 +1,9 @@
 import Navigation from './Navigation';
 
-function Header() {
+export default function Header() {
 	return (
 		<div className='header'>
 			<Navigation />
 		</div>
 	);
 }
-
-export default Header;

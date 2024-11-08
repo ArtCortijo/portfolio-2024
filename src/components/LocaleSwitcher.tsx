@@ -11,13 +11,6 @@ export default function LocaleSwitcher() {
 	const oppositeLocale = locale === 'en' ? 'fr' : 'en';
 
 	return (
-		// <LocaleSwitcherSelect defaultValue={locale} label={t('label')}>
-		// 	{routing.locales.map((cur) => (
-		// 		<option key={cur} value={cur}>
-		// 			{t('locale', { locale: cur })}
-		// 		</option>
-		// 	))}
-		// </LocaleSwitcherSelect>
 		<LocaleSwitcherButton
 			currentLocale={locale}
 			oppositeLocale={oppositeLocale}

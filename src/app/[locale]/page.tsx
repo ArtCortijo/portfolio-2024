@@ -42,7 +42,7 @@ export default async function Home({ params: { locale } }: HomeProps) {
 	const t = await getTranslations('Homepage');
 	const data: HomePage = await getData(locale);
 
-	console.log('data', data);
+	console.log('data', data.skills);
 
 	if (!data) {
 		return (
@@ -53,9 +53,11 @@ export default async function Home({ params: { locale } }: HomeProps) {
 	}
 
 	return (
-		<div className='grid items-center justify-items-center min-h-screen font-[family-name:var(--font-geist-sans)]'>
+		<div className='grid items-center justify-items-center min-h-screen font-[family-name:var(--font-lexend)]'>
 			<section className='h-screen flex flex-col justify-center'>
-				<h1 className='text-4xl font-bold mb-4'>{data.title}</h1>
+				<h1 className='text-4xl mb-4 font-[family-name:var(--font-open-sans)]'>
+					{data.title}
+				</h1>
 				<Link href='/about' className='text-blue-600 hover:text-blue-800'>
 					about
 				</Link>
@@ -71,7 +73,7 @@ export default async function Home({ params: { locale } }: HomeProps) {
 					{data.skills?.map((skill, index) => (
 						<div
 							key={index}
-							className='p-3 bg-gray-100 rounded-lg shadow-sm hover:bg-gray-200 transition-colors'
+							className='p-3 rounded-lg shadow-sm hover:bg-gray-200 transition-colors'
 						>
 							{skill}
 						</div>
@@ -85,7 +87,7 @@ export default async function Home({ params: { locale } }: HomeProps) {
 					{data.softSkills?.map((skill, index) => (
 						<div
 							key={index}
-							className='p-3 bg-gray-100 rounded-lg shadow-sm hover:bg-gray-200 transition-colors'
+							className='p-3 rounded-lg shadow-sm hover:bg-gray-200 transition-colors'
 						>
 							{skill}
 						</div>

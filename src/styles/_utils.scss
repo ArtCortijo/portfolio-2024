@@ -1,0 +1,35 @@
+@use 'sass:math';
+
+@function rem($px) {
+	@if math.is-unitless($px) {
+		@return math.div($px, 16) + rem;
+	} @else {
+		@error "The value passed to rem() must be a unitless number.";
+	}
+}
+
+@function strip-unit($number) {
+	@if type-of($number) == 'number' and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+
+	@return $number;
+}
+
+@function fluid($min, $max) {
+	$large-bp: strip-unit($desktop-xl);
+	$small-bp: strip-unit($small);
+
+	$slope: ($max - $min) / ($large-bp - $small-bp);
+	$slope-to-unit: $slope * 100;
+	$intercept-rem: rem($min - $slope * $small-bp);
+	@return clamp(
+		#{rem($min)},
+		#{$slope-to-unit}vw + #{$intercept-rem},
+		#{rem($max)}
+	);
+}
+
+@function dvh($value) {
+	@return calc($value * var(--dvh, 1vh));
+}
