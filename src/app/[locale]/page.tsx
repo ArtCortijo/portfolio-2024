@@ -1,6 +1,6 @@
-import { getTranslations } from 'next-intl/server';
+// import { getTranslations } from 'next-intl/server';
 import { client } from '../lib/sanity';
-import { HomePage } from '../lib/interface';
+import { HomePage } from '../lib/types';
 import { Link } from '@/i18n/routing';
 // import styles from '../app/page.module.scss';
 
@@ -39,10 +39,8 @@ interface HomeProps {
 }
 
 export default async function Home({ params: { locale } }: HomeProps) {
-	const t = await getTranslations('Homepage');
+	// const t = await getTranslations('Homepage');
 	const data: HomePage = await getData(locale);
-
-	console.log('data', data.skills);
 
 	if (!data) {
 		return (
@@ -69,7 +67,7 @@ export default async function Home({ params: { locale } }: HomeProps) {
 
 			<section className='h-screen flex flex-col justify-center'>
 				<h2 className='text-2xl font-bold mb-6'>Skills</h2>
-				<div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+				<ul className='grid grid-cols-2 md:grid-cols-3 gap-4'>
 					{data.skills?.map((skill, index) => (
 						<div
 							key={index}
@@ -78,12 +76,12 @@ export default async function Home({ params: { locale } }: HomeProps) {
 							{skill}
 						</div>
 					))}
-				</div>
+				</ul>
 			</section>
 
 			<section className='h-screen flex flex-col justify-center'>
 				<h2 className='text-2xl font-bold mb-6'>Soft Skills</h2>
-				<div className='grid grid-cols-2 md:grid-cols-3 gap-4'>
+				<ul className='grid grid-cols-2 md:grid-cols-3 gap-4'>
 					{data.softSkills?.map((skill, index) => (
 						<div
 							key={index}
@@ -92,7 +90,7 @@ export default async function Home({ params: { locale } }: HomeProps) {
 							{skill}
 						</div>
 					))}
-				</div>
+				</ul>
 			</section>
 
 			<section className='h-screen flex flex-col justify-center'>
